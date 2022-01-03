@@ -1,5 +1,5 @@
-food_times = [2,1,3]
-k = 4
+food_times = [3,1,2]
+k = 5
 
 def solution(food_times, k):
     time = 0
@@ -8,6 +8,8 @@ def solution(food_times, k):
             if time == k:
                 if sum(food_times) == 0:
                     answer = -1
+                if food_times[i] == 0:
+                    continue
                 else:
                     answer = i + 1
                 return answer
