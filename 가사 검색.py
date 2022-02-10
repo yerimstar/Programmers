@@ -24,10 +24,11 @@ def solution(words, queries):
                 if start <= word <= end:
                     check += 1
             answer.append(check)
-    print(answer)
+
     return answer
 
-solution(words,queries)
+print(solution(words,queries))
+
 
 
 
