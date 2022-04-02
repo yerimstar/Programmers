@@ -32,20 +32,22 @@ def arrow_sum(appeach,ryan):
     return appeach_score,ryan_score
 
 def solution(n, info):
-    answer = {}
+    answer = []
     choice = [1,0]
     result = list(itertools.product(choice,repeat = 11)) # 중복순열
     for r in result:
         tmp = ryan(n,r,info)
         if tmp:
             appeach_score, ryan_score = arrow_sum(info, tmp)
-            answer[ryan_score-appeach_score] = tmp
+            tmp = tmp[::-1]
+            answer.append((ryan_score-appeach_score,tmp))
 
-    answer = sorted(answer.items(), key=lambda x: x[0], reverse=True)[0]
-    if answer[0] < 0:
+    answer = sorted(answer, key=lambda x: (x[0],x[1]), reverse=True)[0]
+
+    if answer[0] <= 0:
         answer = [-1]
     else:
-        answer = answer[1]
+        answer = answer[1][::-1]
 
     return answer
 
