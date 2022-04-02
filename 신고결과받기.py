@@ -1,21 +1,19 @@
 def solution(id_list, report, k):
     # k는 몇 번 신고당했을 때 정지될지
-    result = {}
-    result2 = {}
+    result = dict.fromkeys(id_list,0)
+    result2 = dict.fromkeys(id_list,0)
     report = list(set(report)) # 여러번 신고 -> 1회로 간주함
-    for id in id_list:
-        result[id] = 0
-        result2[id] = 0
+
+    check = set()
     for r in report:
         result[r.split(" ")[1]] += 1
-    check = [id[0] for id in result.items() if id[1] >= k] # 정지된 ID
+        if result[r.split(" ")[1]] >= k:
+            check.add(r.split(" ")[1])
 
-    for id in id_list:
-        for r in report:
-            user_id = r.split(" ")[0]
-            declaration_id = r.split(" ")[1]
-            if user_id == id and declaration_id in check:
-                result2[id] += 1
+    for r in report:
+        if r.split(" ")[0] in id_list and r.split(" ")[1] in check:
+            result2[r.split(" ")[0]] += 1
+
     answer = list(result2.values())
     return answer
 
