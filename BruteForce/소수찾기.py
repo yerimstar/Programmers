@@ -1,12 +1,14 @@
+'''
+만들 수 있는 모든 수의 조합
+-> 소수 검사
+'''
 from itertools import permutations
-
 
 def is_primenumber(num):
     for i in range(2, num):
         if num % i == 0:
             return False
     return True
-
 
 def solution(numbers):
     numbers = list(numbers)
@@ -22,9 +24,3 @@ def solution(numbers):
             result.append(num)
 
     return len(result)
-
-
-'''
-만들 수 있는 모든 수의 조합 
--> 소수 검사 
-'''
