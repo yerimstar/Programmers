@@ -7,8 +7,7 @@ def solution(s):
             stack.append('(')
         elif check == ')':
             if len(stack) != 0:
-                if stack[-1] == '(':
-                    stack.pop()
+                stack.pop()
             else:
                 answer = False
     if len(stack) != 0:
