@@ -1,7 +1,7 @@
 def solution(n):
-    cnt = bin(n)[2:]
+    cnt = str(bin(n)[2:]).count('1')
     num = n+1
-    while cnt != bin(num)[2:]:
+    while cnt != str(bin(num)[2:]).count('1'):
         num += 1
     return num
 
